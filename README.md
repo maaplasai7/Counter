@@ -41,14 +41,51 @@ A Synchronous counter is the counter in which the clock input with all the flip-
 
 
 ## Program:
+UP Counter
+~~~
+module upcounter(clk,q1,q2,q3,q4);
+input clk;
+output reg q1,q2,q3,q4;
+always@(posedge clk)
+begin
+q4=(q1&q2&q3)^q4;
+q3=(q1&q2)^q3;
+q2=q1^q2;
+q1=1^q1
+end
+endmodule 
+~~~
+
+DOWN Counter
+~~~
+module downcounter(clk,q1,q2,q3,q4);
+input clk;
+output reg q1,q2,q3,q4;
+always@(posedge clk)
+begin
+q4=((~q3)&(~q2)&(~q1))^q4;
+q3=((~q2)&(~q1))^q3;
+q2=(~q1)^q2;
+q1=1^q1;
+end
+endmodule
+~~~
 
 
 ## RTL Schematic:
+UP Counter
+![244758820-8787d9a3-6f97-4271-af9c-39aac75735de](https://github.com/maaplasai7/Counter/assets/134155273/6f3aebad-dfbc-417f-b0b0-b4c8fa6702f0)
+DOWN Counter
+![244759190-a99d3e31-7666-42ed-8ca0-a5379b97d0a1](https://github.com/maaplasai7/Counter/assets/134155273/b9ce7063-3866-42af-bf7c-5556e20562fc)
 
 
 
 
 ## Timing Diagram:
+UP Counter
+![244759113-ae93b627-a0ec-48c9-beb0-0b9edd367167](https://github.com/maaplasai7/Counter/assets/134155273/fb22d2fc-d0e5-488e-806f-13bbfed05b39)
+DOWN Counter
+![244759253-f8a6b808-fe33-488d-9d18-d173394bbdfb](https://github.com/maaplasai7/Counter/assets/134155273/f4ac6714-ca12-4ed8-a42c-085490422c0c)
 
 
 
